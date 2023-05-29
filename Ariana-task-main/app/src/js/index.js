@@ -45,8 +45,6 @@ $(document).on("click", "#submitInfo", function () {
       age: $("#age").val(),
       skils: $("#skils").val(),
     });
-    console.log(users);
-
     if (localStorage.getItem("user")) {
       const data = JSON.parse(localStorage.getItem("user"));
       data.push(...users);
