@@ -122,16 +122,6 @@ $(document).on("click", "#editInfo", function () {
     getTable();
   }
 });
-function createBadge(data) {
-  let badge = "";
-  if (data && data.length) {
-    for (let i = 0; i < data.length; i++)
-      badge += `<span class="badge text-bg-danger">${data[i]}</span>
-  `;
-
-    return badge;
-  }
-}
 
 function getTable() {
   if (localStorage.getItem("user")) {
@@ -143,7 +133,9 @@ function getTable() {
                 <td>${[i + 1]}</td>
                 <td>${data[i].firstName}</td>
                 <td>${data[i].lastName}</td>
-                <td>${calculateAge(data[i].age)}</td>
+                <td><span class="badge text-bg-secondary">${calculateAge(
+                  data[i].age
+                )}</span></td>
                 <td>${createBadge(data[i].skils)}</td>
                 <td>
                     <button type="button" class="btn delete-row" data-id= "${
@@ -161,6 +153,17 @@ function getTable() {
             `);
     }
     rowCount = data.length;
+  }
+}
+
+function createBadge(data) {
+  let badge = "";
+  if (data && data.length) {
+    for (let i = 0; i < data.length; i++)
+      badge += `<span class="badge text-bg-danger">${data[i]}</span>
+  `;
+
+    return badge;
   }
 }
 
